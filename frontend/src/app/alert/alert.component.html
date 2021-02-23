@@ -1,0 +1,32 @@
+<div class="container">
+<br>
+  <H1>Create alert</H1>
+
+  <form [formGroup]="alertForm" >
+    <fieldset class="form-group">
+      <label>Cryptocurrency name</label>
+      <select [formControlName]="'cryptocurrency'" class="form-control">
+        <option *ngFor="let alert of allAlerts" [(ngValue)]="alert">{{alert}}</option>
+      </select>
+    </fieldset>
+
+    {{selectedCC | json}} 
+
+    <fieldset class="form-group">
+        <label>Amount</label>
+        <input type="text" [formControlName]="'amount'" class="form-control" required="required">
+    </fieldset>
+    
+    <fieldset class="form-group">
+      <label>Under or above</label>
+      <select [formControlName]="'mode'"  class="form-control"> 
+        <option value="under">Under</option>
+        <option value="above">Above</option>
+      </select>
+    </fieldset>
+
+    <button type="submit" (click)="saveAlert()" class="btn btn-success">Save</button>
+    &nbsp;&nbsp;
+    <a class="btn btn-default btn-secondary" routerLink="/alerts-list">Back</a>
+  </form>  
+</div>
